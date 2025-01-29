@@ -1,0 +1,24 @@
+---
+const { slug } = Astro.params;
+if (!slug) {
+  return new Response('Not found', { status: 404 });
+}
+
+if (!slug.endsWith('/')) {
+  // Permanent redirect to the canonical URL with trailing slash:
+  const url = new URL(Astro.request.url);
+  url.pathname = `${url.pathname}/`;
+  return Astro.redirect(url, 301);
+}
+---
+
+<html>
+  <head>
+    <title>@astrojs/vercel routing redirect loop</title>
+  </head>
+
+  <body>
+    <h1>@astrojs/vercel routing redirect loop</h1>
+    <h2>{slug}</h2>
+  </body>
+</html>
