@@ -1,15 +1,15 @@
 ---
 const { slug } = Astro.params;
 if (!slug) {
-  return new Response('Not found', { status: 404 });
+  return new Response("Not found", { status: 404 });
 }
 
-if (!slug.endsWith('/')) {
-  // Permanent redirect to the canonical URL with trailing slash:
-  const url = new URL(Astro.request.url);
-  url.pathname = `${url.pathname}/`;
-  return Astro.redirect(url, 301);
-}
+// if (!slug.endsWith('/')) {
+//   // Permanent redirect to the canonical URL with trailing slash:
+//   const url = new URL(Astro.request.url);
+//   url.pathname = `${url.pathname}/`;
+//   return Astro.redirect(url, 301);
+// }
 ---
 
 <html>
